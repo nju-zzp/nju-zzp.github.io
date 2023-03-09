@@ -1,0 +1,175 @@
+baseURL: http://124.222.233.153/
+languageCode: zh-cn
+title: River's BLOG
+theme: PaperMod
+
+enableInlineShortcodes: true #允许内联短码
+enableEmoji: true # 允许使用 Emoji 表情，建议 true
+enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
+
+hasCJKLanguage: true # 自动检测是否包含 中文日文韩文 如果文章中使用了很多中文引号的话可以开启
+
+paginate: 10    # 每页显示的文章数
+
+minify:    # 最小化站点的体积
+  disableXML: true  # 不允许XML
+
+permalinks: #浏览器链接显示方式
+  post: "/:title/"
+  # post: "/:year/:month/:day/:title/"
+
+menu: # 顶栏菜单
+  main:
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 50
+    - identifier: posts
+      name: Essays
+      url: /posts/
+      weight: 3
+    - identifier: tech
+      parent: posts
+      name: Technology
+      url: /posts/tech/
+      weight: 1
+    - identifier: read
+      parent: posts
+      name: Reading
+      url: /posts/read/
+      weight: 2
+    - identifier: life
+      parent: posts
+      name: Life Record
+      url: /posts/life/
+      weight: 3
+    - identifier: archives
+      name: Time
+      url: /archives/
+      weight: 20
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 40
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 60
+    - identifier: friend
+      name: Friends
+      url: /friends
+      weight: 70
+
+
+
+# content的分类方式, 每个post的front matter里设置响应的项就好，比如加tags
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+  highlight:
+    # anchorLineNos: true
+    codeFences: true  
+    guessSyntax: true
+    lineNos: false
+    # noClasses: false
+    # style: monokai
+    style: darcula
+
+    # codeFences：代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
+    # guessSyntax：猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
+    # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
+    # lineNoStart：行号从编号几开始，一般从 1 开始。
+    # lineNos：是否显示行号，我比较喜欢显示，所以我设置的为 true.
+    # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
+    # noClasses：使用 class 标签，而不是内嵌的内联样式 
+
+  
+# 这里的参数会被代码以 .Site.Params 的形式读取
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: "于广阔无垠的宇宙里，留下有限的痕迹"
+  defaultTheme: light
+  #defaultTheme: dark
+  #defaultTheme: auto
+  #disableThemeToggle: true  #defalt false
+  
+  # use Home-Info Mode
+  # homeInfoParams:
+  #   Title: Home Info Title
+  #   Content: home info content, about me river
+
+  profileMode: #Profile Mode Config
+    enabled: true
+    title: "Hi 👋 Welcome to River's BLOG"
+    subtitle: ""
+    imageUrl: "icons/pixel-blue.JPG"
+    imageTitle: "Cat"  #title of image alt
+    imageWidth: 150
+    imageHeight: 150
+    buttons:
+     - name: "🤖 Tech"
+       url: "posts/tech"
+     - name: "📖 Read"
+       url: "posts/read"
+     - name: "🌈 Life"
+       url: "posts/life"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/nju-zzp"
+    - name: bilibili
+      url: "https://space.bilibili.com/21401435"
+    - name: qq
+      url: "/images/my-qq.JPG"
+    - name: wechat
+      url: "/images/my-wechat.JPG"
+    - name: email
+      url: "mailto:1311237665@qq.com"
+
+  ShowBreadCrumbs: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  hideFooter: false # 隐藏页脚
+  showtoc: true
+  tocopen: false
+  VisitCount: true
+  ShowWordCounts: true
+  ShowLastMod: true #显示文章更新时间
+
+  comments: true
+
+  twikoo:
+    version: 1.6.10 # 这个版本号要自己手动修改，和twikoo的版本号要对得上
+
+  label:
+    text: "River's BLOG"
+    icon: "icons/pixel-blue.JPG"
+    iconheight: 35
+
+  assets:
+    favicon: "icons/pixel-blue.JPG"
+
+  #Customizing Fusejs Options for search functionality
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+
